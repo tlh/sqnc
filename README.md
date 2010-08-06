@@ -43,7 +43,7 @@ either tracking down the dependencies yourself or using something like
 clbuild.
 
 The file \`sqnc.asd' will need to be somewhere in the
-\`asdf:*central-registry*'. The easiest way to accomplish this is by
+\`asdf:\*central-registry\*'. The easiest way to accomplish this is by
 symlinking \`sqnc.asd' into \`~/.sbcl/systems/' like this:
 
     ln -s /path/to/sqnc/sqnc.asd ~/.sbcl/systems/
