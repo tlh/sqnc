@@ -1,0 +1,47 @@
+(in-package :cl-user)
+
+; csound ffi defs
+
+(defpackage :csound (:use :cl :cffi))
+
+(in-package :csound)
+
+(define-foreign-library csound (:unix "libcsnd.so"))
+
+(use-foreign-library csound)
+
+(defmacro def-cs-fn (name &rest args)
+  (let ((sym (intern (string-upcase name))))
+    `(progn (defcfun (,sym ,name) ,@args)
+            (export ',sym))))
+
+(def-cs-fn "csoundInitialize" :int (argc :pointer) (argv :pointer) (flags :int))
+(def-cs-fn "csoundCreate" :pointer (hostdata :pointer))
+(def-cs-fn "csoundScoreEvent" :int (csi :pointer) (type :char) (pfields :pointer) (numfields :long))
+(def-cs-fn "csoundInputMessage" :void (csi :pointer) (message :string))
+(def-cs-fn "csoundEnableMessageBuffer" :void (csi :pointer) (tostdout :int))
+(def-cs-fn "csoundGetMessageCnt" :int (csi :pointer))
+(def-cs-fn "csoundGetFirstMessageAttr" :int (csi :pointer))
+(def-cs-fn "csoundGetFirstMessage" :string (csi :pointer))
+(def-cs-fn "csoundPopFirstMessage" :void (csi :pointer))
+(def-cs-fn "csoundGetMessageLevel" :int (csi :pointer))
+(def-cs-fn "csoundSetMessageLevel" :void (csi :pointer) (messagelevel :int))
+(def-cs-fn "csoundGetScoreTime" :double (csi :pointer))
+(def-cs-fn "csoundPerformKsmps" :int (csi :pointer))
+(def-cs-fn "csoundCleanup" :int (csi :pointer))
+(def-cs-fn "csoundDestroy" :void (csi :pointer))
+(def-cs-fn "csoundReset" :void (csi :pointer))
+(def-cs-fn "csoundStop" :void (csi :pointer))
+(def-cs-fn "csoundGetSr" :float (csi :pointer))
+(def-cs-fn "csoundGetKr" :float (csi :pointer))
+(def-cs-fn "csoundGetKsmps" :int (csi :pointer))
+(def-cs-fn "csoundGetNchnls" :int (csi :pointer))
+(def-cs-fn "csoundGet0dBFS" :float (csi :pointer))
+(def-cs-fn "csoundTableLength" :int (csi :pointer) (table :int))
+(def-cs-fn "csoundCompileCsd" :int (csi :pointer) (csdname :string))
+(def-cs-fn "csoundCsdCreate" :void (csi :pointer))
+(def-cs-fn "csoundCsdSetOptions" :void (csi :pointer) (options :string))
+(def-cs-fn "csoundCsdSetOrchestra" :void (csi :pointer) (orchestra :string))
+(def-cs-fn "csoundListChannels" :int (arg0 :pointer) (lst :pointer))
+(def-cs-fn "csoundChanIKSet" :int (arg0 :pointer) (value :float) (n :int))
+(def-cs-fn "csoundGetChannelPtr" :int (arg0 :pointer) (p :pointer) (name :string) (type :int))

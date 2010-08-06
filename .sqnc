@@ -1,0 +1,81 @@
+; -*- Mode: Lisp -*-
+
+(in-package :sqnc)
+
+(set-sqnc-dir "/home/luke/local/code/sqnc/")
+
+(set-latency .5)
+
+(set-csoptions "
+-+rtaudio=pulse
+-dWodac:0")
+
+(sqnc-load "insts.sqnc")
+
+;; (_add (new 'pvseq)  (car (channels (mixer (s)))))
+;; (w/ (ch (car (channels (mixer (s))))) (_del (car (inserts ch)) ch))
+
+;; (_add (new 'convol) (car (channels (mixer (s)))))
+;; (w/ (ch (car (channels (mixer (s))))) (_del (car (inserts ch)) ch))
+
+;; (_add (new 'convol) (cadr (sends (mixer (s)))))
+;; (w/ (ch (cadr (sends (mixer (s))))) (_del (car (inserts ch)) ch))
+
+;; (_add (new 'bverb) (car (channels (mixer (s)))))
+;; (w/ (ch (car (channels (mixer (s))))) (_del (car (inserts ch)) ch))
+;; (output (-is 1001 0 .01 .001 "chn36") (c-cs))
+;; (output (-is 1001 0 .01 .001 "chn37") (c-cs))
+;; (output (-is 1001 0 .01 .001 "chn38") (c-cs))
+
+;; (_add (new 'bverb) (car (sends (mixer (s)))))
+;; (w/ (ch (car (sends (mixer (s))))) (_del (car (inserts ch)) ch))
+
+;; (_add (new 'lowpass2-effect) (car (channels (mixer (s)))))
+;; (w/ (ch (car (channels (mixer (s))))) (_del (car (inserts ch)) ch))
+
+;; (output (-is 1001 0 .01 7000 "chn20") (c-cs))
+;; (output (-is 1001 0 .01 .3   "chn21") (c-cs))
+
+; samples
+
+(import-sample-dir "/home/luke/audio/Samples/")
+
+(set-slices "amen" 38208 47207 57383 67645 72699 77234 81904 86297)
+
+(def-sample-map "amen"
+    "amen"   0  11   6  0  1
+    "amen"  12  23  18  1  2
+    "amen"  24  35  30  2  3
+    "amen"  36  47  42  3  4
+    "amen"  48  59  54  4  5
+    "amen"  60  71  66  5  6
+    "amen"  72  83  78  6  7
+    "amen"  84  95  90  7  8)
+
+; samples^2
+
+(import-sample-dir "/home/luke/audio/Samples/" :power2 t)
+
+(set-slices "amen^2" 38208 47207 57383 67645 72699 77234 81904 86297)
+
+(def-sample-map "amen^2"
+    "amen^2"   0  11   6  0  1
+    "amen^2"  12  23  18  1  2
+    "amen^2"  24  35  30  2  3
+    "amen^2"  36  47  42  3  4
+    "amen^2"  48  59  54  4  5
+    "amen^2"  60  71  66  5  6
+    "amen^2"  72  83  78  6  7
+    "amen^2"  84  95  90  7  8)
+
+; 808
+
+(import-sample-dir "/home/luke/audio/Samples/808/")
+
+(def-sample-map-from-dir "808" "/home/luke/audio/Samples/808/"
+  :start 0 :range-length 1 :offset 0)
+
+(import-sample-dir "/home/luke/audio/Samples/808/" :power2 t)
+
+(def-sample-map-from-dir "808^2" "/home/luke/audio/Samples/808/"
+  :start 0 :range-length 1 :offset 0 :power2 t)
