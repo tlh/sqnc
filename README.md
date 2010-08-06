@@ -1,10 +1,10 @@
 # sqnc
 
-sqnc is a music editor for hackers.  It's written in Lisp, based on
-emacs, makes sound with Csound and has a terminal interface built on
-ncurses.
+sqnc is a music editor for hackers.  It's written in Common Lisp,
+based on Emacs, makes sound with Csound and has a terminal interface
+built on ncurses.
 
-sqnc is my solution to many years of frusteration with existing music
+sqnc is my solution to many years of frustration with existing music
 composition software.  It gets rid of the mouse, GUI windows, modal
 dialogs, nested menus, MIDI, pretty instrument and effect plugins and
 many other concepts taken for granted in modern sequencers and DAWs,
@@ -61,7 +61,7 @@ and their commands.
 ## Configuration
 
 Configuration and customization code should be put in a `~/.sqnc' file
-in your home directory. See the example .sqnc file in the sqnc root
+in your home directory. See the example `.sqnc' file in the sqnc root
 directory.
 
 ## The Future
