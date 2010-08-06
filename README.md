@@ -26,7 +26,7 @@ heavily modified Common Lisp.  I did this because I wanted to be able
 to implement ideas very quickly and keep sqnc's codebase as small as
 possible.  Unfortunately, the result is fairly inscrutable to anyone
 unacquainted with the macros and utility functions in use.  You can
-refer to the file 'util.lisp' for implementation details.  I'll be
+refer to the file \`util.lisp' for implementation details.  I'll be
 converting it back into idiomatic Common Lisp in the near future to
 make it easier for others to understand and contribute.
 
@@ -42,26 +42,26 @@ disappeared from their asdf-install locations, so you're on your own
 either tracking down the dependencies yourself or using something like
 clbuild.
 
-The file 'sqnc.asd' will need to be somewhere in the
-'asdf:*central-registry*'. The easiest way to accomplish this is by
-symlinking 'sqnc.asd' into '~/.sbcl/systems/' like this:
+The file \`sqnc.asd' will need to be somewhere in the
+\`asdf:*central-registry*'. The easiest way to accomplish this is by
+symlinking \`sqnc.asd' into \`~/.sbcl/systems/' like this:
 
     ln -s /path/to/sqnc/sqnc.asd ~/.sbcl/systems/
 
-After that, just run the shell script 'run-sqnc.sh' in rxvt-unicode to
-bring up sqnc. You can symlink 'run-sqnc.sh' into your $PATH to make
+After that, just run the shell script \`run-sqnc.sh' in rxvt-unicode to
+bring up sqnc. You can symlink \`run-sqnc.sh' into your $PATH to make
 this quicker.
 
 ## Usage
 
 sqnc is very similar to emacs. Many of its keybindings are identical.
-Look at the file 'keys.lisp' for a list of all the default keybindings
+Look at the file \`keys.lisp' for a list of all the default keybindings
 and their commands.
 
 ## Configuration
 
-Configuration and customization code should be put in a '~/.sqnc' file
-in your home directory. See the example '.sqnc' file in the sqnc root
+Configuration and customization code should be put in a \`~/.sqnc' file
+in your home directory. See the example \`.sqnc' file in the sqnc root
 directory.
 
 ## The Future
